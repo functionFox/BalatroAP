@@ -5,7 +5,7 @@ local success, dpAPI = pcall(require, "debugplus-api")
 local logger = { -- Placeholder logger, for when DebugPlus isn't available
     log = sendInfoMessage,
     debug = sendDebugMessage,
-    info = sendInfogMessage,
+    info = sendInfoMessage,
     warn = sendWarnMessage,
     error = sendErrorMessage
 }
