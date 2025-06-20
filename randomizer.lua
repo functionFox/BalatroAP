@@ -2787,38 +2787,8 @@ G.AP.localize_name = function(item_id, to_self)
 		-- Stakes per Deck
 		local _id = item_id - G.AP.id_offset
 		if _id >= 400 then
-			local _stake = "stake_white"
-			local _back = "b_red"
-			
-			-- TODO: replace this with a loop
-			if _id % 8 == 0 then
-				_stake = "stake_white"
-			elseif (_id - 1) % 8 == 0 then
-				_stake = "stake_red"
-			elseif (_id - 2) % 8 == 0 then
-				_stake = "stake_green"
-			elseif (_id - 3) % 8 == 0 then
-				_stake = "stake_black"
-			elseif (_id - 4) % 8 == 0 then
-				_stake = "stake_blue"
-			elseif (_id - 5) % 8 == 0 then
-				_stake = "stake_purple"
-			elseif (_id - 6) % 8 == 0 then
-				_stake = "stake_orange"
-			elseif (_id - 7) % 8 == 0 then
-				_stake = "stake_gold"
-			end
-			
-			local _back_keys = {'b_red', 'b_blue', 'b_yellow', 'b_green', 'b_black',
-			'b_magic', 'b_nebula', 'b_ghost', 'b_abandoned', 'b_checkered',
-			'b_zodiac', 'b_painted', 'b_anaglyph', 'b_plasma','b_erratic'}
-			
-			for i = 1, #_back_keys do
-				if _id <= (399 + (8*i)) then
-					_back = _back_keys[i]
-					break
-				end
-			end
+			local _stake = ap_stake_for_id(_id)
+                        local _back = ap_back_for_id(_id)
 			
 			_name = nil
 			

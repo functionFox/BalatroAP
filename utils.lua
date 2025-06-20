@@ -38,3 +38,25 @@ function tableContains(table, value)
     end
     return false
 end
+
+-- Maps AP deck item IDs to their stake type
+local AP_STAKE_KEYS = {
+    'stake_white', 'stake_red', 'stake_green', 'stake_black',
+    'stake_blue', 'stake_purple', 'stake_orange', 'stake_gold',
+}
+
+function ap_stake_for_id(_id)
+    return AP_STAKE_KEYS[(_id % #AP_STAKE_KEYS) + 1]
+end
+
+-- Maps AP deck item IDs to their back type
+local AP_BACK_KEYS = {
+    'b_red', 'b_blue', 'b_yellow', 'b_green', 'b_black',
+    'b_magic', 'b_nebula', 'b_ghost', 'b_abandoned', 'b_checkered',
+    'b_zodiac', 'b_painted', 'b_anaglyph', 'b_plasma', 'b_erratic'
+}
+
+function ap_back_for_id(_id)
+    local index = math.ceil((_id - 399) / 8)
+    return AP_BACK_KEYS[index]
+end
